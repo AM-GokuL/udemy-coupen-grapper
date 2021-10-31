@@ -1,12 +1,12 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-from bs4 import BeautifulSoup
-import requests
-import json
-
+from django.http import HttpResponse #importing django file
+from django.shortcuts import render #importing django file
+from bs4 import BeautifulSoup  #scrapping package
+import requests 
+import json 
+#function
 def scrape_category(name):
-    base_url = 'https://udemycoupon.learnviral.com/coupon-category/' + name + '/'
-    source = requests.get(base_url).text
+    base_url = 'https://udemycoupon.learnviral.com/coupon-category/' + name + '/' #scrapping 
+    source = requests.get(base_url).text #converting from html to text
     soup = BeautifulSoup(source, 'html.parser')
     contents = soup.find_all('div', class_='item-holder')
     courses = []
